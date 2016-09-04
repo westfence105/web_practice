@@ -1,0 +1,8 @@
+Options +FollowSymLinks -Indexes
+
+AddType application/x-httpd-php .php .html .htm
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
