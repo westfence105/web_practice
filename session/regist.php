@@ -13,6 +13,6 @@
 		$_SESSION['item_list'][] = $item;
 		print("<pre>次の商品を追加しました：\t".$item."</pre><br/>");
 	?>
-	<a href="list.php">商品一覧へ</a>
+	<a href="list">商品一覧へ</a>
 </body>
 </html>

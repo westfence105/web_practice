@@ -6,7 +6,7 @@
 </head>
 <body>
 	商品登録
-	<form action="regist.php" method="POST">
+	<form action="regist" method="POST">
 	<table>
 		<tr>
 			<td><input type="text" name="item_name"></td>

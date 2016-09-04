@@ -33,7 +33,7 @@
 			}
 		?>
 	</table>
-	<a href="index.php">追加登録</a>
+	<a href="./">追加登録</a>
 	</div>
 </body>
 </html>

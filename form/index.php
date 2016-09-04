@@ -5,7 +5,7 @@
 <title>input</title>
 </head>
 <body>
-	<form action="output.php" method="POST">
+	<form action="output" method="POST">
 		<table border="1" margin="5">
 			<tr>
 				<td>名前	</td>
