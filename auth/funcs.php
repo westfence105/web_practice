@@ -14,4 +14,8 @@
 			session_regenerate_id(True);
 		}
 	}
+
+	function gen_token(){
+		return hash('sha256',session_id());
+	}
 ?>

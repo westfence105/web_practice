@@ -1,3 +1,8 @@
+<?php
+	require_once 'funcs.php';
+	check_login(True);
+
+?>
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
