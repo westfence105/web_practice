@@ -18,4 +18,8 @@
 	function gen_token(){
 		return hash('sha256',session_id());
 	}
+
+	function hash_pass(string $pass){
+		return hash('sha256',$pass);
+	}
 ?>
