@@ -4,8 +4,10 @@
 
 	if( $_SERVER['REQUEST_METHOD'] == "POST" ){
 		try{
-			if( filter_input( INPUT_POST, 'token') != gen_token() ){
+			if( ! check_token(filter_input( INPUT_POST, 'token')) ){
 				http_response_code(403);
+				print_error_page('403 Forbidden','Invalid token detected.');
+				exit;
 			}
 			else{
 				$username = filter_input( INPUT_POST, "username" );
@@ -49,11 +51,9 @@
 	<form method="POST">
 		ユーザー名：<input type="text" name="username"><br/>
 		パスワード： <input type="password" name="password"><br/>
-		<?php
-			print( '<input type="hidden" name="token" value="'.gen_token().'">');
-		?>
 		<input type="submit" value="Login">
 		<?php
+			print('<input type="hidden" name="token" value="'.gen_token().'">');
 			if( ! empty($error) ){
 				print("<br/>".'<font color="red">'.$error.'</font>');
 			}
