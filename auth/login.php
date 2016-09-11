@@ -62,7 +62,7 @@
 				print($error.'</div>');
 			}
 		?>
-		<input type="submit" value="ログイン">
+		<input type="button" onclick="submit();" value="ログイン">
 		<input type="hidden" name="token" value="<?php print(gen_token()) ?>">
 	</form>
 	<div style="font-size: 90%; margin: 1ex .5em">

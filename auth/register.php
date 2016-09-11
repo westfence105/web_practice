@@ -97,14 +97,14 @@
 		padding-right: 1ex;
 		background: #cceeff;
 	}
+	table.form input {
+		width: 40%;
+		padding: 0.5em .5ex;
+		max-width: 20em;
+	}
 	td.submit {
 		background: #ddffee;
 		text-align: center;
-	}
-	table.form input {
-		width: 40%;
-		height: 3ex;
-		max-width: 20em;
 	}
 	*.error {
 		color: #ff0000;
@@ -142,7 +142,7 @@
 			
 		</script>
 		<tr>
-			<td colspan="2" class="submit"><input type="submit" value="登録"></td>
+			<td colspan="2" class="submit"><input type="button" onclick="submit();" value="登録"></td>
 		</tr>
 	</table>
 	<input type="hidden" name="token" value="<?php print(gen_token()) ?>">
