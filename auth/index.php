@@ -1,7 +1,6 @@
 <?php
 	require_once 'funcs.php';
-	check_login(True);
-
+	session_start();
 ?>
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -10,6 +9,15 @@
 <title>TITLE</title>
 </head>
 <body>
-	
+	<?php
+		if( ! empty($_SESSION['username']) ){
+			print("'".$_SESSION['username']."'としてログインしています。<br/>");
+			print('<a href="logout">ログアウト</a>');
+		}
+		else{
+			print("ログインしていません。<br/>");
+			print('<a href="login">ログイン</a>');
+		}
+	?>
 </body>
 </html>

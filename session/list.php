@@ -2,6 +2,7 @@
 <meta charset="UTF-8">
 <?php
 	session_start();
+	session_regenerate_id(True);
 ?>
 <html>
 <head>

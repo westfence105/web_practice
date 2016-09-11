@@ -9,6 +9,7 @@
 </head>
 <body>
 	<?php
+		session_regenerate_id(True);
 		$item = $_POST['item_name'];
 		$_SESSION['item_list'][] = $item;
 		print("<pre>次の商品を追加しました：\t".$item."</pre><br/>");
