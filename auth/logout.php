@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	unset($_SESSION['username']);
+	session_regenerate_id(True);
 ?>
 <!DOCTYPE html>
 <meta charset="UTF-8">

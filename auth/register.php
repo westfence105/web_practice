@@ -2,6 +2,9 @@
 	require_once 'funcs.php';
 	check_login(False);
 
+	define('EXCEPTION_USERNAME',1);
+	define('EXCEPTION_PASSWORD',2);
+
 	if( filter_input( INPUT_SERVER, 'REQUEST_METHOD' ) == "POST" ){
 		try{
 			validate_token( filter_input( INPUT_POST, 'token') );
@@ -9,13 +12,13 @@
 			$username = filter_input( INPUT_POST, "username" );
 			$password = filter_input( INPUT_POST, "password" );
 			if( empty($username) ){
-				throw new Exception("ユーザー名が空白です。");
+				throw new Exception("ユーザー名が空白です。",EXCEPTION_USERNAME);
 			}
 			elseif ( strlen($username) > 16 ) {
-				throw new Exception("ユーザー名が長すぎます。16文字以下にしてください。");
+				throw new Exception("ユーザー名が長すぎます。16文字以下にしてください。",EXCEPTION_USERNAME);
 			}
 			elseif ( empty($password) ) {
-				throw new Exception("パスワードが空白です。");
+				throw new Exception("パスワードが空白です。",EXCEPTION_PASSWORD);
 			}
 
 			$dbname = 'mysql:host='.getenv('DB_HOST').';dbname=auth_test;';
@@ -53,6 +56,7 @@
 		}
 		catch( Exception $e ){
 			$error = $e->getMessage();
+			$code = $e->getCode();
 		}
 	}
 ?>
@@ -61,18 +65,92 @@
 <html>
 <head>
 <title>登録</title>
+<style type="text/css">
+	body {
+		background: #FFFFFF;
+		font-size: 100%;
+		line-height: 3.5ex;
+	}
+	table.form {
+		width: 100%;
+		border: 1px solid;
+		border-collapse: collapse;
+		border-color: #808080;
+	}
+	table.form tr {
+		border-top: 1px solid;
+		border-bottom: 1px solid;
+		vertical-align: center;
+		height: 8ex;
+	}
+	table.form th, td {
+		border: 1px solid;
+	}
+	table.form th {
+		width: 8em;
+		padding-left: 3em;
+		padding-right: .5em;
+		background: #eeffcc;
+	}
+	table.form td {
+		padding-left: 1.5em;
+		padding-right: 1ex;
+		background: #cceeff;
+	}
+	td.submit {
+		background: #ddffee;
+		text-align: center;
+	}
+	table.form input {
+		width: 40%;
+		height: 3ex;
+		max-width: 20em;
+	}
+	*.error {
+		color: #ff0000;
+		margin-left: 1.5em;
+	}
+</style>
 </head>
 <body>
+	<div style="width: 80%; margin: 0 auto;">
 	<form method="POST">
-		ユーザー名<input type="text" name="username"><br/>
-		パスワード<input type="password" name="password"><br/>
-		<?php
-			if( ! empty($error) ){
-				print("<br/>".'<font color="red">'.$error.'</font>');
-			}
-		?>
-		<input type="submit" value="登録">
-		<input type="hidden" name="token" value="<?php print(gen_token()) ?>">
+	<table class="form">
+		<tr>
+			<th>ユーザー名</th>
+			<td>
+				<input type="text" name="username" value="<?php print($username) ?>">
+				<?php
+					if( (!empty($code)) && $code == EXCEPTION_USERNAME && (!empty($error)) ){
+						print('<span class="error">'.$error.'</span>');
+					}
+				?>
+			</td>
+		</tr>
+		<tr>
+			<th>パスワード</th>
+			<td>
+				<input type="password" name="password" value="<?php print($password) ?>">
+				<?php
+					if( (!empty($code)) && $code == EXCEPTION_PASSWORD && (!empty($error)) ){
+						print('<span class="error">'.$error.'</span>');
+					}
+				?>
+			</td>
+		</tr>
+		<script type="text/javascript">
+			
+		</script>
+		<tr>
+			<td colspan="2" class="submit"><input type="submit" value="登録"></td>
+		</tr>
+	</table>
+	<input type="hidden" name="token" value="<?php print(gen_token()) ?>">
 	</form>
+	<div style="font-size: 90%; margin: 1ex .5em; text-align: right;">
+		<a href="login">ログイン</a><br/>
+		<a href="./">トップへ戻る</a><br/>
+	</div>
+	</div>
 </body>
 </html>

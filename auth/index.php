@@ -17,6 +17,7 @@
 		else{
 			print("ログインしていません。<br/>");
 			print('<a href="login">ログイン</a>');
+			print('<a href="register">新規登録</a>');
 		}
 	?>
 </body>
