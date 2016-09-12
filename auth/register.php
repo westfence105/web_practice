@@ -67,6 +67,7 @@
 <title>登録</title>
 <link rel="stylesheet" type="text/css" href="common.css">
 <link rel="stylesheet" type="text/css" href="register.css">
+<script type="text/javascript" src="add_name.js" ></script>
 </head>
 <body>
 	<div style="width: 80%; margin: 0 auto;">
@@ -94,9 +95,13 @@
 				?>
 			</td>
 		</tr>
-		<script type="text/javascript">
-			
-		</script>
+		<tr>
+			<th>氏名</th>
+			<td>
+				<div id="names"></div>
+				<div><a href="javascript:void(0)" onclick="add_name()">Add Name Element</a></div>
+			</td>
+		</tr>
 		<tr>
 			<td colspan="2" class="submit"><input type="button" onclick="submit();" value="登録"></td>
 		</tr>
