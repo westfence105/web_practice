@@ -67,7 +67,9 @@
 <title>登録</title>
 <link rel="stylesheet" type="text/css" href="common.css">
 <link rel="stylesheet" type="text/css" href="register.css">
-<script type="text/javascript" src="add_name.js" ></script>
+<script type="text/javascript" src="add_name.js" >
+	
+</script>
 </head>
 <body>
 	<div style="width: 80%; margin: 0 auto;">
@@ -98,12 +100,17 @@
 		<tr>
 			<th>氏名</th>
 			<td>
-				<div id="names"></div>
-				<div><a href="javascript:void(0)" onclick="add_name()">Add Name Element</a></div>
+				<div id="name_preview"></div>
+				<div id="names" class="name_input"></div>
+				<script type="text/javascript">
+					addName("family");
+					addName();
+				</script>
+				<div><a href="javascript:void(0)" onclick="addName()">Add Name Element</a></div>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="submit"><input type="button" onclick="submit();" value="登録"></td>
+			<td colspan="2" class="submit"><input type="button" onclick="formatNames(); submit()" value="登録"></td>
 		</tr>
 	</table>
 	<input type="hidden" name="token" value="<?php print(gen_token()) ?>">

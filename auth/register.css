@@ -20,14 +20,16 @@ table.form th {
 	background: #eeffcc;
 }
 table.form td {
-	padding-left: 1.5em;
-	padding-right: 1ex;
+	padding: 1ex 1.5em;
 	background: #cceeff;
 }
-table.form input {
+table.form input,select {
+	margin: 1ex .5em;
+}
+table.form input[type=text,password] {
 	width: 40%;
-	padding: 0.5em .5ex;
 	max-width: 20em;
+	padding: 0.5em .5ex;
 }
 td.submit {
 	background: #ddffee;
@@ -36,4 +38,16 @@ td.submit {
 *.error {
 	color: #ff0000;
 	margin-left: 1.5em;
+}
+*.name_preview {
+	font-weight: bolder;
+	font-size: 100%;
+	float: left;
+	margin-left: 1.5em;
+}
+*.name_preview *.type {
+	font-size: 80%;
+}
+div.name_input {
+	clear: both;
 }
