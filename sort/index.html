@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sortable</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(function($){
+		$('#sortable').sortable();
+		$('#sortable').disableSelection();
+		$('#sortable').bind('sortstop', function( e, ui ){
+			alert('sortstop');
+		});
+	});
+</script>
+</head>
+<body>
+<table border="1">
+	<tbody id="sortable">
+		<tr> <td name="index">1</td> <td>test1</td> </tr>
+		<tr> <td name="index">2</td> <td>test2</td> </tr>
+	</tbody>
+</table>
+</body>
+</html>
