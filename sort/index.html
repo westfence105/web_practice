@@ -7,9 +7,9 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(function($){
-		$('#sortable').sortable();
-		$('#sortable').disableSelection();
-		$('#sortable').bind('sortstop', function( e, ui ){
+		$('.sortable').sortable();
+		$('.sortable').disableSelection();
+		$('.sortable').bind('sortstop', function( e, ui ){
 			alert('sortstop');
 		});
 	});
@@ -22,5 +22,13 @@
 		<tr> <td name="index">2</td> <td>test2</td> </tr>
 	</tbody>
 </table>
+<div class="sortable" style="display: table;">
+	<div style="display: table-row;">
+		<div style="display: table-cell">1</div>
+	</div>
+	<div style="display: table-row;">
+		<div style="display: table-cell">2</div>
+	</div>
+</div>
 </body>
 </html>
